@@ -9,6 +9,7 @@ module.exports = {
 		'prettier/@typescript-eslint',
 		'plugin:prettier/recommended',
 	],
+	globals: { module: 'readonly' },
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaVersion: 12,
