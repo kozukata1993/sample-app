@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { Pokemon, Response } from '../interface';
-import axios, { AxiosResponse } from 'axios';
+import { Pokemon } from '../interface';
+import { PokemonService } from '../pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -9,23 +8,16 @@ import axios, { AxiosResponse } from 'axios';
   styleUrls: ['./pokemon-list.component.scss'],
 })
 export class PokemonListComponent implements OnInit {
-  constructor() {}
+  constructor(private pokemonService: PokemonService) {}
 
-  listOfPokemon: Pokemon[] = [];
+  listOfPokemon!: Pokemon[];
 
   ngOnInit(): void {
-    axios
-      .get(`${environment.apiUrl}/pokemon?limit=151&offset=0`)
-      .then((res: AxiosResponse<Response>) => {
-        console.log(res.data.results);
-        this.listOfPokemon = res.data.results.map((pokemon, i) => {
-          return {
-            id: `000${i + 1}`.slice(-3),
-            name: pokemon.name,
-            detailUrl: pokemon.url,
-          };
-        });
-      });
+    this.getListOfPokemon();
+  }
+
+  getListOfPokemon(): void {
+    this.listOfPokemon = this.pokemonService.getListOfPokemon();
   }
 
   log(message: string): void {
