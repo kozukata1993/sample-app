@@ -9,17 +9,17 @@ import { environment } from '../environments/environment';
 export class PokemonService {
   constructor() {}
 
-  getListOfPokemon(): Promise<Pokemon[]> {
-    return axios
-      .get(`${environment.apiUrl}/pokemon?limit=151&offset=0`)
-      .then((res: AxiosResponse<Response>) => {
-        return res.data.results.map((pokemon, i) => {
-          return {
-            id: `000${i + 1}`.slice(-3),
-            name: pokemon.name,
-            detailUrl: pokemon.url,
-          };
-        });
-      });
+  async getListOfPokemon(): Promise<Pokemon[]> {
+    const res: AxiosResponse<Response> = await axios.get(
+      `${environment.apiUrl}/pokemon?limit=151&offset=0`,
+    );
+
+    return res.data.results.map((pokemon, i) => {
+      return {
+        id: `000${i + 1}`.slice(-3),
+        name: pokemon.name,
+        detailUrl: pokemon.url,
+      };
+    });
   }
 }

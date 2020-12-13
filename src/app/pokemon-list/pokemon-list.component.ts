@@ -16,10 +16,8 @@ export class PokemonListComponent implements OnInit {
     this.getListOfPokemon();
   }
 
-  getListOfPokemon(): void {
-    this.pokemonService.getListOfPokemon().then((res) => {
-      this.listOfPokemon = res;
-    });
+  async getListOfPokemon(): Promise<void> {
+    this.listOfPokemon = await this.pokemonService.getListOfPokemon();
   }
 
   log(message: string): void {
