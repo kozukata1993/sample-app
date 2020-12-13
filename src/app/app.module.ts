@@ -12,9 +12,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
 @NgModule({
-  declarations: [AppComponent, PokemonComponent],
+  declarations: [AppComponent, PokemonComponent, PokemonDetailComponent, PokemonListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

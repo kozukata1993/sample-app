@@ -1,0 +1,5 @@
+<mat-grid-list cols=5 rowHeight='2:3' gutterSize='2em'>
+  <mat-grid-tile *ngFor="let pokemon of listOfPokemon">
+    <app-pokemon [pokemon]="pokemon"></app-pokemon>
+  </mat-grid-tile>
+</mat-grid-list>
