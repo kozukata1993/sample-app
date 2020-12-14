@@ -1,25 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Pokemon, Response } from './interface';
-import axios, { AxiosResponse } from 'axios';
+import { Response } from './interface';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  async getListOfPokemon(): Promise<Pokemon[]> {
-    const res: AxiosResponse<Response> = await axios.get(
-      `${environment.apiUrl}/pokemon?limit=151&offset=0`,
-    );
+  getListOfPokemon(): Observable<Response> {
+    return this.http.get<Response>(`${environment.apiUrl}/pokemon?limit=151&offset=0`);
+  }
 
-    return res.data.results.map((pokemon, i) => {
-      return {
-        id: `000${i + 1}`.slice(-3),
-        name: pokemon.name,
-        detailUrl: pokemon.url,
-      };
-    });
+  getPokemonDetail(id: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/pokemon/${id}`);
   }
 }

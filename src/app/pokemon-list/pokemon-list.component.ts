@@ -16,8 +16,14 @@ export class PokemonListComponent implements OnInit {
     this.getListOfPokemon();
   }
 
-  async getListOfPokemon(): Promise<void> {
-    this.listOfPokemon = await this.pokemonService.getListOfPokemon();
+  getListOfPokemon(): void {
+    this.pokemonService.getListOfPokemon().subscribe((res) => {
+      this.listOfPokemon = res.results.map(({ name, url }, i) => ({
+        id: `000${i + 1}`.slice(-3),
+        name: name,
+        detailUrl: url,
+      }));
+    });
   }
 
   log(message: string): void {

@@ -14,6 +14,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatListModule } from '@angular/material/list';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -32,6 +34,8 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
     MatButtonModule,
     MatTableModule,
     NgxChartsModule,
+    MatListModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

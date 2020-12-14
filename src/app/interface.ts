@@ -14,3 +14,14 @@ export interface Response {
     url: string;
   }[];
 }
+
+export interface PokemonDetail {
+  id: string;
+  name: string;
+  weight: number;
+  status: {
+    name: string;
+    base_stat: number;
+  }[];
+  types: string[];
+}
