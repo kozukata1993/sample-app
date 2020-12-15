@@ -7,11 +7,8 @@
     <div class="image-container">
       <img mat-card-image src="../../assets/pokemonImages/{{pokemon.id}}.png">
     </div>
-    <p>
-      {{pokemon.detailUrl}}
-    </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-stroked-button color="primary" (click)="log(pokemon.name)">Detail</button>
+    <button mat-stroked-button color="primary" routerLink="{{pokemon.detailPath}}">Detail</button>
   </mat-card-actions>
 </mat-card>

@@ -1,5 +1,5 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile>
+<mat-grid-list cols="3" rowHeight="2:3">
+  <mat-grid-tile [colspan]="1">
     <mat-card class="example-card">
       <mat-card-header>
         <mat-card-title>{{pokemonDetail.name}}</mat-card-title>
@@ -13,9 +13,44 @@
           <mat-chip *ngFor="let type of pokemonDetail.types">{{type}}</mat-chip>
         </mat-chip-list>
       </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button color="primary" (click)="goBack()">Back</button>
+      </mat-card-actions>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile>
 
+  <mat-grid-tile [colspan]="2">
+    <ngx-charts-bar-horizontal
+      [view]="view"
+      [roundDomains]="roundDomains"
+      [trimXAxisTicks]="xtrimXAxisTicks"
+      [results]="pokemonDetail.status"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [xScaleMax]="xScaleMax"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)">
+    </ngx-charts-bar-horizontal>
+    <!-- <ngx-charts-bar-horizontal
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="single"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)">
+  </ngx-charts-bar-horizontal> -->
   </mat-grid-tile>
 </mat-grid-list>

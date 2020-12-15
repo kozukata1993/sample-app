@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
 import { Pokemon } from '../interface';
 
 @Component({
@@ -7,7 +8,7 @@ import { Pokemon } from '../interface';
   styleUrls: ['./pokemon.component.scss'],
 })
 export class PokemonComponent implements OnInit {
-  constructor() {}
+  constructor(private location: Location) {}
 
   @Input() pokemon!: Pokemon;
 

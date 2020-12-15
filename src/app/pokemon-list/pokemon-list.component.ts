@@ -22,6 +22,7 @@ export class PokemonListComponent implements OnInit {
         id: `000${i + 1}`.slice(-3),
         name: name,
         detailUrl: url,
+        detailPath: `/detail/${i + 1}`,
       }));
     });
   }

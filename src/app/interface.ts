@@ -3,6 +3,7 @@ export interface Pokemon {
   name: string;
   name_ja?: string;
   detailUrl: string;
+  detailPath: string;
 }
 
 export interface Response {
@@ -21,7 +22,7 @@ export interface PokemonDetail {
   weight: number;
   status: {
     name: string;
-    base_stat: number;
+    value: number;
   }[];
   types: string[];
 }
